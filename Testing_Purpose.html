@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Custom Extension</title>
+</head>
+<body>
+  <button id="runScriptButton">Run Nova converter</button>
+
+  <script>
+    const button = document.getElementById('runScriptButton');
+    button.addEventListener('click', () => {
+      // Send a request to the local Python server
+      fetch('http://localhost:5000/run-script', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          // Handle the results returned by the Python script
+          console.log('Python script results:', data);
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
